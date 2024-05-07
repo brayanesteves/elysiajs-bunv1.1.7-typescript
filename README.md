@@ -12,4 +12,14 @@ To start the development server run:
 bun run dev
 ```
 
+## Commands line
+Use database sqlite
+```bash
+bunx prisma init --datasource-provider sqlite
+```
+Create table
+```bash
+bunx prisma migrate dev
+```
+
 Open http://localhost:3000/ with your browser to see the result.
