@@ -7,6 +7,12 @@ export class Server {
 
     constructor() {
         this.app = new Elysia();
+        this.app.derive(({ headers }) => {
+            const auth = headers['authorization'];
+            return {
+                token:auth?.startsWith( 'Bearer ') ? auth!.slice(7) : null,
+            };
+        });
         this.app.group('/api/v0.0.1', (app) => app.use(userRouter));
     }
 

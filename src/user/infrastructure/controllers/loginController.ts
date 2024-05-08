@@ -1,10 +1,18 @@
 import { LoginUser } from "../../application/login";
 
+type Login = {
+    body: {
+           email:string,
+        password:string,
+    },
+    token:string,
+};
+
 export class LoginController {
     
     constructor(private loginUser: LoginUser) { }
     
-    async run({ body }: { body: { email:string, password:string, } }) {
+    async run({ body, token, }: Login) {
         try {
             const user = await this.loginUser.run(body.email, body.password);
             return {

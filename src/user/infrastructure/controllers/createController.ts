@@ -4,7 +4,7 @@ export class CreateUserController {
 
     constructor(private createUser:CreateUser) {}
 
-    async run({ body }:any) {
+    async run({ body, token }:any) {
         try {
             const user = await this.createUser.run(body.email, body.password);
             return {
